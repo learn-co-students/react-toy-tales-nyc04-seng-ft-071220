@@ -13,10 +13,23 @@ class ToyCard extends Component {
       })
     })
       .then(response => response.json())
-      .then(updatedtoy => {
-        this.props.updateToyFromState(updatedtoy)
+      .then(updatedToy => {
+        this.props.updateToyFromState(updatedToy)
       })
   }
+
+
+  handleDelete = (evt) => {
+
+    fetch(`http://localhost:3000/toys/${this.props.toy.id}`, {
+        method: "DELETE"
+    })
+        .then(res => res.json())
+        .then((deletedObj) => {
+            this.props.deleteToyFromState(deletedObj.id)
+        })
+
+}
 
   render() {
     console.log('FROM ToyCard: ', this.props.toy)
@@ -28,7 +41,7 @@ class ToyCard extends Component {
         <img src={image} alt={name} className="toy-avatar" />
         <p>{likes} Likes </p>
         <button className="like-btn" onClick={this.handleLike}>Like {'<3'}</button>
-        <button className="del-btn">Donate to GoodWill</button>
+        <button className="del-btn" onClick={this.handleDonateToGoodWill}>Donate to GoodWill</button>
       </div>
     );
   }

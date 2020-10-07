@@ -57,7 +57,10 @@ handleSubmit = (evt) => {
             onChange={this.handleInputChange}
           />
           <br/>
-          <input type="submit" name="submit" value="Create New Toy" className="submit"/>
+          <input type="submit" 
+          name="submit" 
+          value="Create New Toy" 
+          className="submit"/>
         </form>
       </div>
     );

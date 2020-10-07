@@ -57,9 +57,20 @@ class App extends React.Component{
 
   }
 
+  deleteToyFromState = (deleteID) => {
+    let copyOfToys = this.state.toys.filter(toyObj => {
+      return toyObj.id !== deleteID
+    })
+    this.setState({
+      toys: copyOfToys
+    })
+
+  }
+
 
 
   render(){
+    
     return (
       <>
         <Header/>
@@ -72,7 +83,10 @@ class App extends React.Component{
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer toys={this.state.toys} updateToyFromState={this.updateToyFromState} />
+        <ToyContainer toys={this.state.toys} 
+        updateToyFromState={this.updateToyFromState}
+        deleteToyFromState={this.deleteToyFromState} 
+        />
       </>
     );
   }
