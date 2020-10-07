@@ -24,7 +24,7 @@ class App extends React.Component{
   render(){
     return (
       <>
-        <Header/>
+        <Header title="Toy Club"/>
         { this.state.display
             ?
           <ToyForm/>
