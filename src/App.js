@@ -36,10 +36,25 @@ class App extends React.Component{
     })
   }
 
+  updateToy = (updatedToy) => {
+    let newToysArr = this.state.toys.map((toy) => {
+      if (toy.id === updatedToy.id) {
+        return updatedToy
+      } else {
+        return toy
+      }
+    })
+
+    this.setState({
+      toys: newToysArr
+    })
+  }
+
   deleteToy = (selectedToyId) => {
     let newToysArr = this.state.toys.filter((toy) => {
       return toy.id !== selectedToyId
     })
+
     this.setState({
       toys: newToysArr
     })
@@ -62,6 +77,7 @@ class App extends React.Component{
         </div>
         <ToyContainer
           toys={this.state.toys}
+          updateToy={this.updateToy}
           deleteToy={this.deleteToy}
         />
       </>
