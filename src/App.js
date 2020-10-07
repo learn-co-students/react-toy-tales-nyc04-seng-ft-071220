@@ -11,8 +11,22 @@ import data from './data'
 class App extends React.Component{
 
   state = {
-    display: false
+    display: []
   }
+  
+
+ componentDidMount() {
+   fetch('http://localhost:3000/toys')
+   .then(res => res.json())
+   .then((arrayOfToys) => {
+     console.log(arrayOfToys)
+     this.setState( {
+       display: arrayOfToys
+     })
+   })
+ }
+
+
 
   handleClick = () => {
     let newBoolean = !this.state.display
@@ -22,6 +36,7 @@ class App extends React.Component{
   }
 
   render(){
+
     return (
       <>
         <Header/>
@@ -34,7 +49,8 @@ class App extends React.Component{
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer/>
+        <ToyContainer 
+        display = {this.state.display} />
       </>
     );
   }
