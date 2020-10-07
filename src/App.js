@@ -35,6 +35,25 @@ class App extends React.Component{
 
 }
 
+deleteToyFromState = (deletedID) => {
+  console.log("THIS IS THE DELETED ID", deletedID)
+  let copyOfToys2 = this.state.display.filter(toyObj => {
+    return toyObj.id !== deletedID
+  })
+  console.log("ARRAY OF NON-DELETED TOYS", copyOfToys2)
+  this.setState({display: copyOfToys2})
+}
+
+updateLikeFromState = (updatedObj) => {
+  let copyOfToys = this.state.display.map(toy => {
+    if (toy.id === updatedObj.id) {
+      return updatedObj
+    } else {
+      return toy
+    }
+  })
+  this.setState({display: copyOfToys})
+}
 
   handleClick = () => {
     let newBoolean = !this.state.display
@@ -57,7 +76,9 @@ class App extends React.Component{
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
         <ToyContainer 
-        display = {this.state.display} />
+        display = {this.state.display} 
+        deleteToyFromState = {this.deleteToyFromState} 
+        updateLikeFromState = {this.updateLikeFromState}/>
         </div>
     );
   }

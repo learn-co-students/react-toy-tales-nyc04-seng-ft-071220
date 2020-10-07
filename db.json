@@ -40,23 +40,7 @@
       "id": 7,
       "name": "Hamm",
       "image": "https://cdn140.picsart.com/244090226021212.png?r1024x1024",
-      "likes": 0
-    },
-    {
-      "id": 8,
-      "name": "Little Green Men",
-      "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
-    },
-    {
-      "name": "",
-      "image": "",
-      "id": 9
-    },
-    {
-      "name": "barbie 2",
-      "image": "https://i.ytimg.com/vi/5GeZCtj9SDM/maxresdefault.jpg",
-      "id": 10
+      "likes": 4
     }
   ]
 }

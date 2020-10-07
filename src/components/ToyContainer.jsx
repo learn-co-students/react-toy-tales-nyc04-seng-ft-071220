@@ -10,6 +10,8 @@ const ToyContainer = (props) => {
     
     key = {singularToy.id}
     display = {singularToy}
+    deleteToyFromState = {props.deleteToyFromState}
+    updateLikeFromState = {props.updateLikeFromState}
     />
   })
   return(

@@ -11,8 +11,8 @@ For this lab, you will not be expected to `fetch` Andy's toy from a database. Al
 
 After drawing out the app hierarchy, you should hook up the data from the 'db.json' file to your React components. Given your component tree, think about which component should be responsible for the array. After you have put the data in the proper component, your next job is to render the ToyCard component on the page. -->
 
-After the ToyCard components are on the page, consider building out the functionality for the ToyForm. Using the ideas of controlled form and inverse data-flow, think about how to render a new ToyCard for the toy that you created.
+<!-- After the ToyCard components are on the page, consider building out the functionality for the ToyForm. Using the ideas of controlled form and inverse data-flow, think about how to render a new ToyCard for the toy that you created. -->
 
-After you have the create functionality built out, consider building out the delete functionality. When you click on the `Donate to Goodwill` button, the ToyCard that you clicked on should be removed from the DOM as well as the backend.
+<!-- After you have the create functionality built out, consider building out the delete functionality. When you click on the `Donate to Goodwill` button, the ToyCard that you clicked on should be removed from the DOM as well as the backend. -->
 
 After that, consider building out the like functionality. Clicking on the button should increase the number of likes on the DOM as well as the backend.
