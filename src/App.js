@@ -46,6 +46,20 @@ class App extends React.Component {
     })
   }
 
+
+  updateToyFromState =(updatedObj) =>{
+    let copyOftoy = this.state.toys.map(toy => {
+      if (toy.id === updatedObj.id){
+        return updatedObj
+      }else{
+        return toy
+      }
+    })
+    this.setState({
+      toys: copyOftoy
+    })
+  }
+
   render() {
     return (
       <>
@@ -54,7 +68,11 @@ class App extends React.Component {
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer toys={this.state.toys} />
+        <ToyContainer 
+        toys={this.state.toys}
+        deleteToyFromState={this.deleteToyFromState}
+        updateToyFromState={this.updateToyFromState}
+        />
       </>
     );
   }
