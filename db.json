@@ -47,6 +47,12 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "barbie",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81aohg%2B8SBL._AC_SX425_.jpg",
+      "likes": 0,
+      "id": 9
     }
   ]
 }
