@@ -21,13 +21,18 @@ class App extends React.Component{
     })
   }
 
+  toyInfo = (infoFromChild) => {
+    console.log(infoFromChild)
+  }
+  
+
   render(){
     return (
       <>
         <Header title="Toy Club"/>
         { this.state.display
             ?
-          <ToyForm/>
+          <ToyForm />
             :
           null
         }
