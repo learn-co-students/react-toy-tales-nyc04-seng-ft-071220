@@ -5,13 +5,27 @@ import Header from './components/Header'
 import ToyForm from './components/ToyForm'
 import ToyContainer from './components/ToyContainer'
 
-import data from './data'
+// import data from './data'
 
 
 class App extends React.Component{
 
   state = {
-    display: false
+    display: false,
+    toys: []
+  }
+
+  componentDidMount() {
+
+    fetch('http://localhost:3000/toys')
+      .then(response => response.json())
+      .then((arrayOftoys) => {
+        console.log('FROM APP: ', arrayOftoys)
+        this.setState({
+          toys: arrayOftoys
+        })
+      })
+
   }
 
   handleClick = () => {
@@ -21,20 +35,44 @@ class App extends React.Component{
     })
   }
 
+  addToyToState = (newlyCreatedtoy) => {
+    let copyOfToys = [...this.state.toys, newlyCreatedtoy]
+    this.setState({
+      toys: copyOfToys
+    })
+  }
+
+  updateToyFromState = (updatedObj) => {
+    let copyOfToys = this.state.toys.map((toy) => {
+      if(toy.id === updatedObj.id) {
+        return updatedObj
+      } else {
+        return toy
+      }
+    })
+
+    this.setState({
+      toys: copyOfToys
+    })
+
+  }
+
+
+
   render(){
     return (
       <>
         <Header/>
         { this.state.display
             ?
-          <ToyForm/>
+          <ToyForm addToyToState={this.addToyToState} />
             :
           null
         }
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer/>
+        <ToyContainer toys={this.state.toys} updateToyFromState={this.updateToyFromState} />
       </>
     );
   }
