@@ -36,20 +36,34 @@ class App extends React.Component{
     })
   }
 
+  deleteToy = (selectedToyId) => {
+    let newToysArr = this.state.toys.filter((toy) => {
+      return toy.id !== selectedToyId
+    })
+    this.setState({
+      toys: newToysArr
+    })
+  }
+
   render(){
     return (
       <>
         <Header/>
         { this.state.display
             ?
-          <ToyForm addNewToy={this.addNewToy}/>
+          <ToyForm
+            addNewToy={this.addNewToy}
+          />
             :
           null
         }
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer toys={this.state.toys}/>
+        <ToyContainer
+          toys={this.state.toys}
+          deleteToy={this.deleteToy}
+        />
       </>
     );
   }
