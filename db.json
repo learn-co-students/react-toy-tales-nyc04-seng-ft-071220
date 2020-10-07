@@ -7,51 +7,10 @@
       "likes": 5
     },
     {
-      "id": 2,
-      "name": "Buzz Lightyear",
-      "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
-    },
-    {
-      "id": 3,
-      "name": "Mr. Potato Head",
-      "image": "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/d/d8/Mr-potato-head-toy-story.gif/revision/latest?cb=20151129131217",
-      "likes": 3
-    },
-    {
-      "id": 4,
-      "name": "Slinky Dog",
-      "image": "https://www.freeiconspng.com/uploads/slinky-png-transparent-1.png",
-      "likes": 4
-    },
-    {
-      "id": 5,
-      "name": "Rex",
-      "image": "http://umich.edu/~chemh215/W11HTML/SSG5/ssg5.2/FRex.png",
-      "likes": 1
-    },
-    {
       "id": 6,
       "name": "Bo Peep",
       "image": "http://4.bp.blogspot.com/_OZHbJ8c71OM/Sog43CMFX2I/AAAAAAAADEs/0AKX0XslD4g/s400/bo.png",
       "likes": 2
-    },
-    {
-      "id": 7,
-      "name": "Hamm",
-      "image": "https://cdn140.picsart.com/244090226021212.png?r1024x1024",
-      "likes": 0
-    },
-    {
-      "id": 8,
-      "name": "Little Green Men",
-      "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
-    },
-    {
-      "name": "Bob",
-      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDQ8ODw8NDw0PDw8NDw8NDQ8PDQ0PFREWFhURFRMYHSggGBolGxUTITEhJSkrLi4uFx8zODMsNygtMzcBCgoKDg0OGhAQGi0lHSUtKy0tLi4tLS0tLS0tLS0uLS0tLSstLS0tKy4tLS0tLS0rLS0tLSstLS0tLS0tKy0tLf/AABEIAKgBLAMBEQACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAQIDBAUGB//EADoQAAICAQIEAwUFBgYDAAAAAAABAgMRBCEFEjFBBlFhE3GBkaEiMkKxwSNSctHh8BQ0YnOS8RUWM//EABsBAQACAwEBAAAAAAAAAAAAAAABAgMEBQYH/8QANhEBAAICAQMCAwUHAwUBAAAAAAECAxEEBRIhMUETUWEiMnGBsQYUQqHB0fAVkeEkM0NSciP/2gAMAwEAAhEDEQA/APuAAAAAAAAAABIAAAAAAAACk7EurSMeTLTH96dJisz6MT1cTUt1HDHuv8KwtVEiOo4pPhSvG+L/AKmanMxW90TSYZEzZiYmNwokkAAAAAAAAAAAAAAGBAAAAAAAAAAAAASAAAAAACG8CZ0OXrOKL7sPjL+R5rqPXa490xevzbuLizPmznvUN9zy2XqGW87bUY4hHtGa08nJ809sMkbWXrzLx6qzSGeFh0cXKtpimrNVe10f8jp8bqF8c+JY7Y4lv0XqS8n5HqONya56d0NW9JrLMbCgAAAAAAAAAAAAEMAAAAAAAAAAAAAEoAAAAAAHC4zxDLdUHsvvNd35HlOudTmP/wAMc/jP9HR4nH8d9vycuLPIS3pZIsrKksiZVWWSBkxRE28qSzRZ0axDHK6MkRPsgeX0bjJbxkusX5m/w+XbDeJhS9ImG9wzWuxOFiUboYU0vuyXayP+l/R5R7DBnrlp3VaVqzWW8ZlQAAAAAAAAAAjAAAAAAAAAAAAAAABASAAAANTim",
-      "id": 9
     },
     {
       "name": "Json",

@@ -37,6 +37,15 @@ class App extends React.Component {
     })
   };
 
+  deleteToyFromState = (deletedToy) => {
+    let copyOfToys = this.state.toys.filter(toyObj => {
+      return toyObj.id !== deletedToy
+    })
+    this.setState({
+      toys: copyOfToys
+    })
+  }
+
   render() {
     return (
       <>
