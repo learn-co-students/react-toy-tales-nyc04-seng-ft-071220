@@ -27,6 +27,14 @@ class App extends React.Component{
  }
 
 
+ addToyToState = (newlyCreatedToy) => {
+  let copyOfToys = [...this.state.display, newlyCreatedToy]
+  this.setState({
+    display: copyOfToys
+  })
+
+}
+
 
   handleClick = () => {
     let newBoolean = !this.state.display
@@ -38,20 +46,19 @@ class App extends React.Component{
   render(){
 
     return (
-      <>
-        <Header/>
-        { this.state.display
-            ?
-          <ToyForm/>
-            :
-          null
-        }
+     
+       <div className = "App">
+        <Header />
+          
+          <ToyForm addToyToState = {this.addToyToState}/>
+            
+    
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
         <ToyContainer 
         display = {this.state.display} />
-      </>
+        </div>
     );
   }
 

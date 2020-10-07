@@ -7,9 +7,9 @@ For this lab, you will not be expected to `fetch` Andy's toy from a database. Al
 
 `json-server --watch db.json`
 
-Before you start building out the application, the first step that you should take is to draw out your app hierarchy. This will tell you how components can speak to each other as well as where that information should be stored.
+<!-- Before you start building out the application, the first step that you should take is to draw out your app hierarchy. This will tell you how components can speak to each other as well as where that information should be stored.
 
-After drawing out the app hierarchy, you should hook up the data from the 'db.json' file to your React components. Given your component tree, think about which component should be responsible for the array. After you have put the data in the proper component, your next job is to render the ToyCard component on the page.
+After drawing out the app hierarchy, you should hook up the data from the 'db.json' file to your React components. Given your component tree, think about which component should be responsible for the array. After you have put the data in the proper component, your next job is to render the ToyCard component on the page. -->
 
 After the ToyCard components are on the page, consider building out the functionality for the ToyForm. Using the ideas of controlled form and inverse data-flow, think about how to render a new ToyCard for the toy that you created.
 
