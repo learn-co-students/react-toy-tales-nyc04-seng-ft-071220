@@ -5,7 +5,7 @@ Andy has misplaced of his toys (again) and need your help to organize them.
 
 For this lab, you will not be expected to `fetch` Andy's toy from a database. All the information about Andy's toys can be found in the 'db.json' file, which you will need to fire up, using the following command in your terminal:
 
-`json-server --watch db.json`
+`json-server --watch db.json` 
 
 Before you start building out the application, the first step that you should take is to draw out your app hierarchy. This will tell you how components can speak to each other as well as where that information should be stored.
 
