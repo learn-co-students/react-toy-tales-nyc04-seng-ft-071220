@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class ToyCard extends Component {
   handleDelete = (event) => {
@@ -22,8 +22,8 @@ class ToyCard extends Component {
       })
     })
     .then(r => r.json())
-    .then((updatedToy) => {
-      this.props.updateToy(updatedToy)
+    .then((selectedToy) => {
+      this.props.updateToy(selectedToy)
     })
   }
 
@@ -40,7 +40,6 @@ class ToyCard extends Component {
       </div>
     )
   }
-
 }
 
 export default ToyCard

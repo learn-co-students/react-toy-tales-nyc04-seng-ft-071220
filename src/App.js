@@ -4,9 +4,7 @@ import Header from './components/Header'
 import ToyForm from './components/ToyForm'
 import ToyContainer from './components/ToyContainer'
 
-
 class App extends React.Component{
-
   state = {
     display: false,
     toys: []
@@ -66,9 +64,7 @@ class App extends React.Component{
         <Header/>
         { this.state.display
             ?
-          <ToyForm
-            addNewToy={this.addNewToy}
-          />
+          <ToyForm addNewToy={this.addNewToy}/>
             :
           null
         }
@@ -81,9 +77,8 @@ class App extends React.Component{
           deleteToy={this.deleteToy}
         />
       </>
-    );
+    )
   }
-
 }
 
 export default App;

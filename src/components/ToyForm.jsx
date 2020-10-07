@@ -14,6 +14,7 @@ class ToyForm extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault()
+
     fetch("http://localhost:3000/toys", {
       method: "POST",
       headers: {
@@ -68,9 +69,8 @@ class ToyForm extends Component {
           />
         </form>
       </div>
-    );
+    )
   }
-
 }
 
-export default ToyForm;
+export default ToyForm
