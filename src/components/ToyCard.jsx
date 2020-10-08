@@ -13,8 +13,8 @@ class ToyCard extends Component {
       })
     })
       .then(response => response.json())
-      .then(updatedtoy => {
-        this.props.updateToyFromState(updatedtoy)
+      .then(updatedToy => {
+        this.props.updateToyFromState(updatedToy)
       })
   }
 
