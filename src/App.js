@@ -11,7 +11,8 @@ import data from './data'
 class App extends React.Component{
 
   state = {
-    display: false
+    display: false,
+    toys: []
   }
 
   handleClick = () => {
@@ -21,20 +22,75 @@ class App extends React.Component{
     })
   }
 
+  toySubmit = (name, img) => {
+    // console.log(`name: ${name}, img: ${img}`)
+    fetch('http://localhost:3000/toys', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        image: img,
+        likes: 0
+      })
+    })
+      .then(() => this.fetchToys())
+  }
+
+  fetchToys = () => {
+    fetch('http://localhost:3000/toys')
+      .then(resp => resp.json())
+      .then(toys => this.setState({ toys }))
+  }
+
+  deleteToy = (id) => {
+    fetch(`http://localhost:3000/toys/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+      .then(() => this.fetchToys())
+  }
+
+  likeToy = (likes, id) => {
+    // console.log(`id: ${id}, current likes: ${likes}`)
+    fetch(`http://localhost:3000/toys/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        likes: likes
+      })
+    })
+      .then(() => this.fetchToys())
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/toys')
+      .then(resp => resp.json())
+      .then(toys => this.setState({ toys }))
+  }
+
   render(){
     return (
       <>
         <Header/>
         { this.state.display
             ?
-          <ToyForm/>
+          <ToyForm submit={this.toySubmit} />
             :
           null
         }
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer/>
+        <ToyContainer like={this.likeToy} delete={this.deleteToy} toys={this.state.toys} />
       </>
     );
   }
