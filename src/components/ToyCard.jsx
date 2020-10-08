@@ -2,33 +2,33 @@ import React, { Component } from 'react'
 
 class ToyCard extends Component {
   handleDelete = (event) => {
-    fetch(`http://localhost:3000/toys/${this.props.toy.id}`, {
+    fetch(`http://localhost:3000/toys/${this.props.singleToy.id}`, {
       method: "DELETE"
     })
     .then(r => r.json())
-    .then(
-      this.props.deleteToy(this.props.toy.id)
-    )
+    .then((singleToy) => {
+      this.props.deleteToyFunc(this.props.singleToy.id)
+    })
   }
 
   handleUpdate = (event) => {
-    fetch(`http://localhost:3000/toys/${this.props.toy.id}`, {
+    fetch(`http://localhost:3000/toys/${this.props.singleToy.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        likes: this.props.toy.likes + 1
+        likes: this.props.singleToy.likes + 1
       })
     })
     .then(r => r.json())
     .then((selectedToy) => {
-      this.props.updateToy(selectedToy)
+      this.props.updateToyFunc(selectedToy)
     })
   }
 
   render() {
-    let {name, image, likes} = this.props.toy
+    let {name, image, likes} = this.props.singleToy
 
     return (
       <div className="card">

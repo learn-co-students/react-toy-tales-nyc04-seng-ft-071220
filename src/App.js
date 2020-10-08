@@ -71,11 +71,7 @@ class App extends React.Component{
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer
-          toys={this.state.toys}
-          updateToy={this.updateToy}
-          deleteToy={this.deleteToy}
-        />
+        <ToyContainer toysArray={this.state.toys} updateToyFunc={this.updateToy} deleteToyFunc={this.deleteToy} />
       </>
   )
   }

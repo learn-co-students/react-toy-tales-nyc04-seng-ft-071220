@@ -3,8 +3,8 @@ import ToyCard from './ToyCard'
 
 const ToyContainer = (props) => {
 
-  let toysArr = props.toys.map((toy) => {
-    return <ToyCard key={toy.id} toy={toy} deleteToy={props.deleteToy} updateToy={props.updateToy}/>
+  let toysArr = props.toysArray.map((toy) => {
+    return <ToyCard key={toy.id} singleToy={toy} deleteToyFunc={props.deleteToyFunc} updateToyFunc={props.updateToyFunc}/>
   })
 
   return(
