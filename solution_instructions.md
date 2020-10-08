@@ -521,6 +521,8 @@ export default App
 #### 2. In `ToyForm.jsx`, create state so that we can save the user's inputs.
 
 ```javascript
+// ToyForm.jsx
+
 class ToyForm extends Component {
   state = {
     
@@ -539,6 +541,8 @@ export default ToyForm
 Add `name` and `image` as attributes in the state. Set them to equal empty strings.
 
 ```javascript
+// ToyForm.jsx
+
 class ToyForm extends Component {
   state = {
     name: "",
@@ -555,9 +559,12 @@ class ToyForm extends Component {
 export default ToyForm
 ```
 
+#### 3. Create event listeners for each input field in the form.
 Create a helper method called `handleChange()` that changes the state whenever a user enters an input for the name and image fields.
 
 ```javascript
+// ToyForm.jsx
+
 class ToyForm extends Component {
   state = {
     name: "",
@@ -582,6 +589,8 @@ export default ToyForm
 Pass in `event` as an argument for `handleChange()`.
 
 ```javascript
+// ToyForm.jsx
+
 class ToyForm extends Component {
   state = {
     name: "",
@@ -605,6 +614,8 @@ export default ToyForm
 Write a `this.setState()` method to update the state. We're going to use the name and value attributes of the event's target to dynamically inform us which state attributes are being updated.
 
 ```javascript
+// ToyForm.jsx
+
 class ToyForm extends Component {
   state = {
     name: "",
@@ -636,6 +647,8 @@ If this is confusing, let's look at this input field as an example. Here you can
 Now, let's add `onChange` event listeners to each of the input fields in the form. Set the event listeners to equal the helper method that we just wrote, so that it gets invoked every time a change occurs on the input.
 
 ```javascript
+// ToyForm.jsx
+
 class ToyForm extends Component {
   state = {
     name: "",
@@ -653,10 +666,209 @@ class ToyForm extends Component {
       <div className="container">
         <form className="add-toy-form">
           <h3>Create a toy!</h3>
+
+          {/* we're going to add the onChange event listener at the end of the input tag */}
           <input type="text" name="name" placeholder="Enter a toy's name..." className="input-text" onChange={this.handleChange}/>
           <br/>
+
+          {/* same idea for this one */}
           <input type="text" name="image" placeholder="Enter a toy's image URL..." className="input-text" onChange={this.handleChange}/>
           <br/>
+          <input type="submit" name="submit" value="Create New Toy" className="submit"/>
+        </form>
+      </div>
+    )
+  }
+}
+
+export default ToyForm
+```
+
+#### 4. Create a POST request to save the user's input in the backend.
+We're successfully able to change the state to capture the user's input, but now we have to send that data to the backend. You can also write `console.log(this.state.name)` and `console.log(this.state.image)` inside the `render()` method to see the state getting updated dynamically!
+
+Let's create a helper method called `handleSubmit()` that houses our fetch POST request.
+
+```javascript
+// ToyForm.jsx
+
+class ToyForm extends Component {
+  state = {
+    name: "",
+    image: ""
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  // here's our new helper method
+  handleSubmit = () => {
+
+  }
+
+  render() {
+    return (
+      ...
+    )
+  }
+}
+
+export default ToyForm
+```
+
+Pass in `event` as an argument.
+
+```javascript
+// ToyForm.jsx
+
+handleSubmit = (event) => {
+
+}
+```
+
+Let's stop the page from refreshing when the user hits the submit button by writing in `event.preventDefault()`.
+
+```javascript
+// ToyForm.jsx
+
+handleSubmit = (event) => {
+  event.preventDefault()
+}
+```
+
+Write a fetch request using the POST method. Pass in `localhost:3000/toys` to the fetch request. Get the values for the name and image of the new toy instance from the state. Since it's impossible for a newly created toy to have any likes yet, set the likes to equal 0.
+
+```javascript
+// ToyForm.jsx
+
+handleSubmit = (event) => {
+  event.preventDefault()
+
+  fetch(`localhost:3000/toys`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: this.state.name,
+      image: this.state.image,
+      likes: 0
+    })
+  })
+  .then()
+  .then()
+}
+```
+
+In the first `then` statement, take the response and turn it into a JSON object.
+
+```javascript
+// ToyForm.jsx
+
+handleSubmit = (event) => {
+  event.preventDefault()
+
+  fetch(`localhost:3000/toys`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: this.state.name,
+      image: this.state.image,
+      likes: 0
+    })
+  })
+  .then(r => r.json())
+  .then()
+}
+```
+
+In the second `then` statement, invoke the helper method we wrote in `App.js` called `addNewToy(newToy)`. Pass in the new toy instance as the argument.
+
+```javascript
+// ToyForm.jsx
+
+handleSubmit = (event) => {
+  event.preventDefault()
+
+  fetch(`localhost:3000/toys`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: this.state.name,
+      image: this.state.image,
+      likes: 0
+    })
+  })
+  .then(r => r.json())
+  .then((newlyCreatedToy) => {
+    this.props.addNewToy(newlyCreatedToy)
+  })
+}
+```
+
+#### 5. Add an `onSubmit` event listener to the form. Set the event listener to equal the `handleSubmit()` helper method.
+This is how your `ToyForm.js` file should look at the end of this step.
+
+```javascript
+// ToyForm.jsx
+
+import React, { Component } from 'react'
+
+class ToyForm extends Component {
+  state = {
+    name: "",
+    image: ""
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    fetch("http://localhost:3000/toys", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        image: this.state.image,
+        likes: 0
+      })
+    })
+    .then(r => r.json())
+    .then((newlyCreatedToy) => {
+      this.props.addNewToy(newlyCreatedToy)
+    })
+  }
+
+  render() {
+    return (
+      <div className="container">
+
+        {/* here's where we're adding the submit event listener*/}
+        <form className="add-toy-form" onSubmit={this.handleSubmit}>
+          <h3>Create a toy!</h3>
+
+          <input type="text" name="name" placeholder="Enter a toy's name..." className="input-text" onChange={this.handleChange}/>
+
+          <br/>
+
+          <input type="text" name="image" placeholder="Enter a toy's image URL..." className="input-text" onChange={this.handleChange}/>
+
+          <br/>
+
           <input type="submit" name="submit" value="Create New Toy" className="submit"/>
         </form>
       </div>

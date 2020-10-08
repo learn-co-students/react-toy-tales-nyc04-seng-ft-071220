@@ -27,8 +27,8 @@ class ToyForm extends Component {
       })
     })
     .then(r => r.json())
-    .then((newToy) => {
-      this.props.addNewToy(newToy)
+    .then((newlyCreatedToy) => {
+      this.props.addNewToy(newlyCreatedToy)
     })
   }
 
@@ -36,37 +36,17 @@ class ToyForm extends Component {
     return (
       <div className="container">
         <form className="add-toy-form" onSubmit={this.handleSubmit}>
-
           <h3>Create a toy!</h3>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter a toy's name..."
-            className="input-text"
-            onChange={this.handleChange}
-            autoComplete="off"
-          />
+          <input type="text" name="name" placeholder="Enter a toy's name..." className="input-text" onChange={this.handleChange}/>
+          
+          <br/>
+
+          <input type="text" name="image" placeholder="Enter a toy's image URL..." className="input-text" onChange={this.handleChange}/>
 
           <br/>
 
-          <input
-            type="text"
-            name="image"
-            placeholder="Enter a toy's image URL..."
-            className="input-text"
-            onChange={this.handleChange}
-            autoComplete="off"
-          />
-
-          <br/>
-
-          <input
-            type="submit"
-            name="submit"
-            placeholder="Create New Toy"
-            className="submit"
-          />
+          <input type="submit" name="submit" value="Create New Toy" className="submit"/>
         </form>
       </div>
     )
