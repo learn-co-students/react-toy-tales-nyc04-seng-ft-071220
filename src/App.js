@@ -77,7 +77,7 @@ class App extends React.Component{
           deleteToy={this.deleteToy}
         />
       </>
-    )
+  )
   }
 }
 
