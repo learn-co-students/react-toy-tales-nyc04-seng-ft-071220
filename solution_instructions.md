@@ -1,6 +1,7 @@
 # Solution Instructions
 ## Table of contents
 * [Getting started](#getting-started)
+* [Relationship hierarchy](#relationship-hierarchy)
 * [Challenge 1](#challenge-1)
 * [Challenge 2](#challenge-2)
 * [Challenge 3](#challenge-3)
@@ -24,6 +25,12 @@ npm start
 * The terminal will ask you to start a new server since we already have the JSON server running on `localhost:3000`. Enter `y` to start a new server on `localhost:3001`.
 * Open `http://localhost:3001` in the browser to see your app.
 * Make a copy of `db.json` and save it as `original_db.json`. This is so that you can always refer back to the original database in case you mess up the database with incorrect PATCH requests.
+
+<a name="relationship-hierarchy"/>
+
+## Relationship hierarchy
+Here's a diagram of how the components in this app can talk to each other.
+![hierarchy diagram of app components](https://i.imgur.com/a0c52yZ.png)
 
 <a name="challenge-1"/>
 
