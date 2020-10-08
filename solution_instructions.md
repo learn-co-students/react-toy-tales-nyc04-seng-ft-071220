@@ -893,6 +893,8 @@ Invoke the helper method that was passed down as props.
 #### 5. Create an event listener for the `Donate to GoodWill` button on the ToyCard.
 Invoke the `handleDelete()` helper method.
 
+<a name="challenge-4"/>
+
 ## Challenge 4
 **Consider building out the like functionality. Clicking on the button should increase the number of likes on the DOM as well as the backend.**
 
