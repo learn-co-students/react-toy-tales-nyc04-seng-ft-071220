@@ -2,6 +2,7 @@
 ## Table of contents
 * [Getting started](#getting-started)
 * [Relationship hierarchy](#relationship-hierarchy)
+* [Challenge 1](#challenge-1)
 * [Challenge 2](#challenge-2)
 * [Challenge 3](#challenge-3)
 
