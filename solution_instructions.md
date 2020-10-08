@@ -248,6 +248,49 @@ const ToyContainer = (props) => {
 }
 ```
 
+Render `toysArr` inside the `return()` method.
+
+```javascript
+// ToyContainer.jsx
+
+const ToyContainer = (props) => {
+
+  let toysArr = props.toys.map((toy) => {
+    return <ToyCard key={toy.id} toy={toy}/>
+  })
+
+  return(
+    <div id="toy-collection">
+      { toysArr }
+    </div>
+  )
+}
+```
+
+This is how your `ToyContainer.jsx` file should look at the end of this step.
+
+```javascript
+// ToyContainer.jsx
+
+import React from 'react'
+import ToyCard from './ToyCard'
+
+const ToyContainer = (props) => {
+
+  let toysArr = props.toys.map((toy) => {
+    return <ToyCard key={toy.id} toy={toy}/>
+  })
+
+  return(
+    <div id="toy-collection">
+      { toysArr }
+    </div>
+  )
+}
+
+export default ToyContainer
+```
+
 #### 5. In `ToyCard.jsx`, fill out each HTML element with the relevant toy attribute.
 First, let's destructure the toy props that we're receiving from the ToyContainer component. Write this statement inside the `render()` method, but before the `return()`.
 
@@ -293,6 +336,33 @@ class ToyCard extends Component {
     )
   }
 }
+```
+
+This is how your `ToyCard.jsx` file should look at the end of this step.
+
+```javascript
+// ToyCard.jsx
+
+import React, { Component } from 'react'
+
+class ToyCard extends Component {
+
+  render() {
+    let {name, image, likes} = this.props.toy
+    
+    return (
+      <div className="card">
+        <h2>{ name }</h2>
+        <img src={ image } alt={ name } className="toy-avatar" />
+        <p>{ likes } Likes </p>
+        <button className="like-btn">Like {'<3'}</button>
+        <button className="del-btn">Donate to GoodWill</button>
+      </div>
+    )
+  }
+}
+
+export default ToyCard
 ```
 
 Et voilà! That is how you solve all the deliverables for this lab. 🌟
