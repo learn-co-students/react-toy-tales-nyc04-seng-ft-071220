@@ -48,7 +48,7 @@ class App extends React.Component {
 
 
   updateToyFromState =(updatedObj) =>{
-    let copyOftoy = this.state.toys.map(toy => {
+    let copyOfToy = this.state.toys.map(toy => {
       if (toy.id === updatedObj.id){
         return updatedObj
       }else{
@@ -56,7 +56,7 @@ class App extends React.Component {
       }
     })
     this.setState({
-      toys: copyOftoy
+      toys: copyOfToy
     })
   }
 

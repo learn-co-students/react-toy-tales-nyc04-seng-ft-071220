@@ -7,8 +7,8 @@ class ToyCard extends Component {
     })
       .then((res) => res.json())
       .then((deletedToy) => {
-        let deleteid = this.props.toyObj.id
-        this.props.deleteToyFromState(deleteid)
+        let deleteId = this.props.toyObj.id
+        this.props.deleteToyFromState(deleteId)
       });
   };
 
