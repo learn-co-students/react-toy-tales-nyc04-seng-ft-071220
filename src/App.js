@@ -13,9 +13,9 @@ class App extends React.Component{
   componentDidMount(){
     fetch("http://localhost:3000/toys")
     .then(r => r.json())
-    .then((toysArray) => {
+    .then((newToysArray) => {
       this.setState({
-        toys: toysArray
+        toys: newToysArray
       })
     })
   }
