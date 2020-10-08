@@ -31,7 +31,11 @@ npm start
 ## Challenge 1
 **Render the ToyCard component on to the page for each toy instance.**
 
-## Steps
+What does this mean?
+* Access the information about the toys from the backend (which is our `db.json` file).
+* Send all the toy instances to the ToyContainer.
+* Iterate through all the toy instances and return a ToyCard.
+
 #### 1. Add a `toys` attribute to the state in `App.js` and assign it to an empty array.
 
 ```javascript
@@ -67,4 +71,4 @@ componentDidMount(){
 }
 ```
 
-Et voilà! That is how you solve all the core deliverables for this lab. 🌟
+Et voilà! That is how you solve all the deliverables for this lab. 🌟
