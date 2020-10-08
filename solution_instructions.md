@@ -878,3 +878,29 @@ class ToyForm extends Component {
 
 export default ToyForm
 ```
+
+<a name="challenge-3"/>
+
+## Challenge 3
+**Consider building out the delete functionality. When you click on the `Donate to Goodwill` button, the ToyCard that you clicked on should be removed from the DOM as well as the backend.**
+
+#### 1. In `App.js`, create a helper method for removing a toy from the state's toys array.
+#### 2. Pass down the helper method as props to `ToyContainer.jsx`.
+#### 3. Pass down this helper method *again* as props to each `ToyCard` component.
+#### 4. Create a helper method called `handleDelete()` that has a fetch DELETE request.
+Invoke the helper method that was passed down as props.
+
+#### 5. Create an event listener for the `Donate to GoodWill` button on the ToyCard.
+Invoke the `handleDelete()` helper method.
+
+## Challenge 4
+**Consider building out the like functionality. Clicking on the button should increase the number of likes on the DOM as well as the backend.**
+
+#### 1. In `App.js`, create a helper method for updating a toy from the state's toys array.
+#### 2. Pass down the helper method as props to `ToyContainer.jsx`.
+#### 3. Pass down this helper method *again* as props to each `ToyCard` component.
+#### 4. Create a helper method called `handleDelete()` that has a fetch PATCH request.
+Invoke the helper method that was passed down as props.
+
+#### 5. Create an event listener for the `Like` button on the ToyCard.
+Invoke the `handleDelete()` helper method.
