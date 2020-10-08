@@ -365,4 +365,92 @@ class ToyCard extends Component {
 export default ToyCard
 ```
 
-Et voilà! That is how you solve all the deliverables for this lab. 🌟
+Et voilà! That is how you render all the toys on to the page. 🌟
+
+## Challenge 2
+**Build out the functionality for the ToyForm. Using the ideas of controlled form and inverse data-flow, think about how to render a new ToyCard for the toy that you created.**
+
+What does this mean?
+* When the user fills out the toy form, by inputting a name and image link, the new toy should persist in the backend (our `db.json` file) and show up on the page without refreshing.
+
+#### 1. In `App.js`, create a helper method that will push the new toy instance into the toys array in the state.
+
+```javascript
+// App.js
+
+handleClick = () => {
+  let newBoolean = !this.state.display
+  this.setState({
+    display: newBoolean
+  })
+}
+
+// here's our helper method
+addNewToy = () => {
+
+}
+
+render() {
+  return(
+    ...
+  )
+}
+```
+
+Pass in the new toy instance as an argument.
+
+```javascript
+// App.js
+
+addNewToy = (newToy) => {
+  
+}
+```
+
+Create a new variable called `newToysArr`. Set it to equal an array that uses the spread operator to include our existing array of toys from the state, and then the new toy instance. We want to use the spread operator – instead of simply pushing the new toy instance into the array – so that we can make a non-destructive change and avoid directly mutating the state.
+
+```javascript
+// App.js
+
+addNewToy = (newToy) => {
+  let newToysArr = [...this.state.toys, newToy]
+}
+```
+
+Use `this.setState()` to set the state's toys attribute to equal the new toys array.
+
+```javascript
+// App.js
+
+addNewToy = (newToy) => {
+  let newToysArr = [...this.state.toys, newToy]
+  this.setState({
+    toys: newToysArr
+  })
+}
+```
+
+Now, let's pass down this helper method as props to the `ToyForm` component.
+
+```javascript
+// App.js
+
+render(){
+  return (
+    <>
+      <Header/>
+      { this.state.display
+          ?
+        // here's where we're passing down the helper method as props
+        <ToyForm addNewToy={this.addNewToy}/>
+          :
+        null
+      }
+      <div className="buttonContainer">
+        <button onClick={this.handleClick}> Add a Toy </button>
+      </div>
+      <ToyContainer toys={this.state.toys} />
+    </>
+  )
+}
+```
