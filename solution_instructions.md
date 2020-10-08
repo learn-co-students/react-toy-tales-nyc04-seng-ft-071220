@@ -217,7 +217,7 @@ const ToyContainer = (props) => {
 }
 ```
 
-Fill out the `map()` statement so that it returns a ToyCard component.
+Fill out the `map()` statement so that the callback returns a ToyCard component.
 
 ```javascript
 // ToyContainer.jsx
@@ -236,7 +236,7 @@ const ToyContainer = (props) => {
 }
 ```
 
-Send down the individual toy instance and its id attribute as props to the ToyCard component. Creating a `key` prop is a requirement in React when creating child components. The `key` props must be a totally unique value for each child component.
+Send down the individual toy instance and its id attribute as props to the ToyCard component. Creating a `key` prop is a requirement in React when creating child components in a list. The `key` props must be a totally unique value for each child component.
 
 ```javascript
 // ToyContainer.jsx
