@@ -104,7 +104,8 @@ render(){
 }
 ```
 
-#### 4. In `ToyContainer.jsx`, pass in `props` to the function argument.
+#### 4. In `ToyContainer.jsx`, iterate through the toys props and return a ToyCard component for each instance.
+Since ToyContainer is a functional component, we need to pass in `props` as the function argument.
 
 ```javascript
 const ToyContainer = (props) => {
@@ -116,7 +117,6 @@ const ToyContainer = (props) => {
 }
 ```
 
-#### 5. Iterate through the toys props and return a ToyCard component for each instance.
 Above the `return()` statement, create a new variable called `toysArray`.
 
 ```javascript
@@ -179,6 +179,49 @@ const ToyContainer = (props) => {
       {/* Render the collection of ToyCards */}
     </div>
   )
+}
+```
+
+#### 5. In `ToyCard.jsx`, fill out each HTML element with the relevant toy attribute.
+First, let's destructure the toy props that we're receiving from the ToyContainer component. Write this statement inside the `render()` method, but before the `return()`.
+
+```javascript
+class ToyCard extends Component {
+
+  render() {
+    let {name, image, likes} = this.props.toy
+
+    return (
+      <div className="card">
+        <h2>{'' /* Toy's Name */}</h2>
+        <img src={'' /* Toy's Image */} alt={'' /* Toy's Name */} className="toy-avatar" />
+        <p>{'' /* Toy's Likes */} Likes </p>
+        <button className="like-btn">Like {'<3'}</button>
+        <button className="del-btn">Donate to GoodWill</button>
+      </div>
+    )
+  }
+}
+```
+
+Next, place the destructured attributes in the commented sections.
+
+```javascript
+class ToyCard extends Component {
+
+  render() {
+    let {name, image, likes} = this.props.toy
+    
+    return (
+      <div className="card">
+        <h2>{ name }</h2>
+        <img src={ image } alt={ name } className="toy-avatar" />
+        <p>{ likes } Likes </p>
+        <button className="like-btn">Like {'<3'}</button>
+        <button className="del-btn">Donate to GoodWill</button>
+      </div>
+    )
+  }
 }
 ```
 
