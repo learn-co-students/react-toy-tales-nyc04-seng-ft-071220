@@ -41,18 +41,6 @@
       "name": "Hamm",
       "image": "https://cdn140.picsart.com/244090226021212.png?r1024x1024",
       "likes": 0
-    },
-    {
-      "id": 8,
-      "name": "Little Green Men",
-      "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
-    },
-    {
-      "name": "dumbo",
-      "image": "https://cdn.shopify.com/s/files/1/1335/6483/products/elephant-2_1024x1024.jpg?v=1504779116",
-      "likes": 10,
-      "id": 9
     }
   ]
 }

@@ -20,7 +20,6 @@ class App extends React.Component{
     fetch('http://localhost:3000/toys')
       .then(response => response.json())
       .then((arrayOftoys) => {
-        console.log('FROM APP: ', arrayOftoys)
         this.setState({
           toys: arrayOftoys
         })
@@ -57,6 +56,18 @@ class App extends React.Component{
 
   }
 
+  deleteToyFromState = () => {
+
+    fetch('http://localhost:3000/toys')
+      .then(response => response.json())
+      .then((arrayOftoys) => {
+        console.log('FROM APP: ', arrayOftoys)
+        this.setState({
+          toys: arrayOftoys
+        })
+      })
+  }
+
 
 
   render(){
@@ -72,7 +83,7 @@ class App extends React.Component{
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer toys={this.state.toys} updateToyFromState={this.updateToyFromState} />
+        <ToyContainer toys={this.state.toys} updateToyFromState={this.updateToyFromState} deleteToyFromState={this.deleteToyFromState}/>
       </>
     );
   }

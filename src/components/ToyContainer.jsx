@@ -3,10 +3,8 @@ import ToyCard from './ToyCard'
 
 function ToyContainer(props){
 
-  console.log('FROM ToyContainer: ', props.toys)
-
   let arrayOfToyComponents = props.toys.map((singularToyObj) => {
-    return <ToyCard key={singularToyObj.id} toy={singularToyObj} updateToyFromState={props.updateToyFromState}/>
+    return <ToyCard key={singularToyObj.id} toy={singularToyObj} updateToyFromState={props.updateToyFromState} deleteToyFromState={props.deleteToyFromState}/>
   })
 
   return(
