@@ -430,7 +430,7 @@ addNewToy = (newToy) => {
 }
 ```
 
-Now, let's pass down this helper method as props to the `ToyForm` component.
+Now, let's pass down this helper method as props to the `ToyForm` component. This will allow the `ToyForm` to have access to this helper method and invoke it.
 
 ```javascript
 // App.js
@@ -453,4 +453,216 @@ render(){
     </>
   )
 }
+```
+
+This is how your `App.js` file should look at the end of this step.
+
+```javascript
+// App.js
+
+import React from 'react'
+import './App.css'
+import Header from './components/Header'
+import ToyForm from './components/ToyForm'
+import ToyContainer from './components/ToyContainer'
+
+class App extends React.Component{
+  state = {
+    display: false,
+    toys: []
+  }
+
+  componentDidMount(){
+    fetch("http://localhost:3000/toys")
+    .then(r => r.json())
+    .then((newToysArray) => {
+      this.setState({
+        toys: newToysArray
+      })
+    })
+  }
+
+  handleClick = () => {
+    let newBoolean = !this.state.display
+    this.setState({
+      display: newBoolean
+    })
+  }
+
+  addNewToy = (newToy) => {
+    let newToysArr = [...this.state.toys, newToy]
+    this.setState({
+      toys: newToysArr
+    })
+  }
+
+  render(){
+    return (
+      <>
+        <Header/>
+        { this.state.display
+            ?
+          <ToyForm addNewToy={this.addNewToy}/>
+            :
+          null
+        }
+        <div className="buttonContainer">
+          <button onClick={this.handleClick}> Add a Toy </button>
+        </div>
+        <ToyContainer toys={this.state.toys} />
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+#### 2. In `ToyForm.jsx`, create state so that we can save the user's inputs.
+
+```javascript
+class ToyForm extends Component {
+  state = {
+    
+  }
+
+  render() {
+    return(
+      ...
+    )
+  }
+}
+
+export default ToyForm
+```
+
+Add `name` and `image` as attributes in the state. Set them to equal empty strings.
+
+```javascript
+class ToyForm extends Component {
+  state = {
+    name: "",
+    image: ""
+  }
+
+  render() {
+    return(
+      ...
+    )
+  }
+}
+
+export default ToyForm
+```
+
+Create a helper method called `handleChange()` that changes the state whenever a user enters an input for the name and image fields.
+
+```javascript
+class ToyForm extends Component {
+  state = {
+    name: "",
+    image: ""
+  }
+
+  // here's our new helper method
+  handleChange = () => {
+    
+  }
+
+  render() {
+    return(
+      ...
+    )
+  }
+}
+
+export default ToyForm
+```
+
+Pass in `event` as an argument for `handleChange()`.
+
+```javascript
+class ToyForm extends Component {
+  state = {
+    name: "",
+    image: ""
+  }
+
+  handleChange = (event) => {
+    
+  }
+
+  render() {
+    return(
+      ...
+    )
+  }
+}
+
+export default ToyForm
+```
+
+Write a `this.setState()` method to update the state. We're going to use the name and value attributes of the event's target to dynamically inform us which state attributes are being updated.
+
+```javascript
+class ToyForm extends Component {
+  state = {
+    name: "",
+    image: ""
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  render() {
+    return(
+      ...
+    )
+  }
+}
+
+export default ToyForm
+```
+
+If this is confusing, let's look at this input field as an example. Here you can see that the HTML element is an `input` tag. Its `name` is set to `image`, so when we call `event.target.name` on this input field, it'll return `image`. The `event.target.value` will be whatever the user enters in the field. The `placeholder` is set to `Enter a toy's image URL...`, so that will be the default text that shows in the input field when it's empty.
+
+```javascript
+<input type="text" name="image" placeholder="Enter a toy's image URL..." className="input-text"/>
+```
+
+Now, let's add `onChange` event listeners to each of the input fields in the form. Set the event listeners to equal the helper method that we just wrote, so that it gets invoked every time a change occurs on the input.
+
+```javascript
+class ToyForm extends Component {
+  state = {
+    name: "",
+    image: ""
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <form className="add-toy-form">
+          <h3>Create a toy!</h3>
+          <input type="text" name="name" placeholder="Enter a toy's name..." className="input-text" onChange={this.handleChange}/>
+          <br/>
+          <input type="text" name="image" placeholder="Enter a toy's image URL..." className="input-text" onChange={this.handleChange}/>
+          <br/>
+          <input type="submit" name="submit" value="Create New Toy" className="submit"/>
+        </form>
+      </div>
+    )
+  }
+}
+
+export default ToyForm
 ```
