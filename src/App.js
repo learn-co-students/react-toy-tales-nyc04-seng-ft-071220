@@ -1,42 +1,85 @@
-import React from 'react';
-import './App.css';
+import React, {useState, useEffect} from 'react';
 
+import './App.css';
+// import arrayOfToys from './db'
 import Header from './components/Header'
 import ToyForm from './components/ToyForm'
 import ToyContainer from './components/ToyContainer'
 
 
-class App extends React.Component{
+function App() {
 
-  state = {
-    display: false
-  }
+  let [toys, setToys] = useState([])
+  let [display, setDisplay] = useState(false)
 
-  handleClick = () => {
-    let newBoolean = !this.state.display
-    this.setState({
+  // state = {
+  //   toys: [],
+  //   display: false
+  // }
+
+  useEffect(() => {
+    fetch("http://localhost:3000/toys")
+    .then(res => res.json())
+    .then(arrayOfToys => {
+      setToys(arrayOfToys)
+    })
+  }, [])
+
+  // componentDidMount() {
+  //   fetch("http://localhost:3000/toys")
+  //   .then(res => res.json())
+  //   .then(arrayOfToys => {
+  //     this.setState({
+  //       toys: arrayOfToys
+  //     })
+  //   })        
+  // }
+
+  let handleClick = () => {
+    let newBoolean = !display
+    setDisplay({
       display: newBoolean
     })
   }
 
-  render(){
+  let addAToy = (newToy) => {
+    let copyOfToys = [...toys, newToy]
+    setToys(copyOfToys)
+  }
+
+  let deleteAToy = (deletedID) => {
+    let copyOfToys = toys.filter(toyObj => {
+      return toyObj.id !== deletedID
+    })
+    setToys(copyOfToys)
+  }
+
+  let increaseLikes = (updatedToy) => {
+    let copyOfToys = toys.map(toy => {
+      if(toy.id === updatedToy.id) {
+        return updatedToy
+      } else {
+        return toy
+      }
+    })
+    setToys(copyOfToys)
+  }
+
     return (
       <>
         <Header/>
-        { this.state.display
+        { display
             ?
-          <ToyForm/>
+          <ToyForm addAToy={addAToy}/>
             :
           null
         }
         <div className="buttonContainer">
-          <button onClick={this.handleClick}> Add a Toy </button>
+          <button onClick={handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer/>
+        <ToyContainer toys={toys} deleteAToy={deleteAToy} increaseLikes={increaseLikes}/>
       </>
     );
-  }
-
 }
 
 export default App;
